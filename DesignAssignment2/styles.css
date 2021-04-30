@@ -1,0 +1,224 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap');
+
+body {
+font-family:"Roboto Slab"
+}
+.header{
+    background-color:#7dd8e8;
+    padding-left:28px;
+    padding-right:28px;
+    padding-top:24px;
+    padding-bottom:24px;
+}
+.header > div{
+    display: inline-block;
+}
+
+.sub_header1{
+    width:987px;
+}
+.sub_header2{
+    width: 253px;
+    margin-left:41px;
+}
+
+.sub_header1 > div {
+    display:inline-block;
+}
+
+.header2{
+    width:300px
+}
+.header2 span{
+    font-size:66px;
+    font-family:"Roboto Slab";
+    font-weight:300
+}
+.header3> input {
+    width:380px
+   
+}
+
+.sub_header2{
+    text-align:right;
+}
+.navigation_content {
+    background-color: #f5f5f5;
+    padding-left:28px;
+    padding-right:28px;
+    padding-top:16px;
+    padding-bottom:16px;
+    
+}
+.navigation_content  ul {
+    display: inline-block;
+    width:864px;
+
+}
+.nav_elements >ul > li{
+    display:inline-block;
+    margin-right: 29px;
+    
+
+}
+.navigation_content > div {
+    display:inline-block;
+}
+
+
+.navright > div {
+    display: inline-block;
+}
+.image1 > span{
+    margin-left: 2px;
+}
+.image2 > span{
+    margin-left: 8px;
+}
+.image2{
+    margin-left: 44px;
+}
+.mainbody {
+margin-top: 40px;
+margin-left: 29px;
+margin-right:29px;
+background: url("body-background-repeat.png") repeat-y;
+}
+.mainbody_left {
+    width: 20%;
+
+}
+.mainbody > div{
+        display:inline-block;
+        vertical-align:top;
+        
+}
+.mainbody_left1 > span {
+    background-color: #2fc1d9;
+    display: block;
+    padding-left: 16px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+.mainbody_left1 >ul >li{
+    background-color: #f5f5f5;
+    display: block;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 16px;
+}
+.mainbody_left1 >ul >li>img{
+    float: right;
+    margin-right: 21px;
+}
+.sub1_left1 >span{
+    background-color: #f5f5f5;
+    display: block;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 16px;
+}
+
+    .mainbody_left2 > span {
+        background-color: #2fc1d9;
+        display: block;
+        padding-left: 16px;
+        padding-top: 18px;
+        padding-bottom: 18px;
+}
+ 
+.sub1_left2 >ul>li{
+    background-color: #f5f5f5;
+    display: block;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left:16px ;
+}
+.sub1_left2 >ul>li>img{
+    float: right;
+    margin-right: 16px;
+}
+.mainbody_right{
+    width: 20%;
+    margin-left: 41px;
+    background-color: #f5f5f5 ;
+}
+
+
+.sub1_right1 >span{
+    background-color:#2fc1d9 ;
+    display: block;
+    padding-left: 17px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+} 
+.sub2_right1 >span {
+    background-color: #f5f5f5;
+    display: block;
+    padding-top: 18px;
+    padding-left: 17px;
+}
+.aloncoe > div{
+    display: inline-block;
+}
+
+.footer{
+    background-color: grey;
+    
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.footer >div {
+    display: inline-block;
+}
+.footer >.footer_left > ul >li{
+    display: inline-block;
+    margin-left: 28px;
+    
+}
+.footer_right{
+    float: right;
+    margin-right: 29px;
+    
+}
+.mainbody_center{
+    width: 50%;
+    margin-left: 43px;
+    
+}
+.subaloncoe >p > span{
+    display: inline;
+    color:#2fc1d9;
+}
+.subaloncoe{
+    vertical-align: top; 
+}
+.marypilot >div{
+    display: inline-block;
+    vertical-align: top;
+}
+.jimroy >div{
+    display: inline-block;
+    vertical-align: top;
+}
+.johnpetermoise >div{
+    display: inline-block;
+    vertical-align: top;
+}
+.marrianegig >div{
+    display: inline-block;
+    vertical-align: top;
+}
+.footer{
+    color: white;
+}
+.mainbody_center >span{
+    font-weight: bold;
+}
+.header3>div{
+    display: inline-block;
+    vertical-align: top;
+
+}
