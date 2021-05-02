@@ -8,15 +8,29 @@
 .navbar{
     color: white;
     padding-bottom: 20px;
+    width: 100%;
+    display: block;
+}
+.navbar > ul{
+    
+    display: inline-block;
+    float: right;
+    
 }
 .navbar >ul >li{
     display: inline-block;
     margin-right: 28px;
-}
-.navbar >ul{
-    display: inline-block;
     
+   
+    
+   /* padding-left: 100px;*/
+
+ 
+   
 }
+
+    
+
 .header_right{
     text-align: right;
 }
@@ -59,6 +73,7 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     padding-left: 1%;
     padding-right: 8%;
+    color: rgb(108, 108, 110);
    
    
 }
@@ -77,6 +92,8 @@ h2 {
     line-height: 0.1em;
     margin: 10px 0 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+  
+   
     font-weight: 15pt;
 }
 h2 span {
@@ -93,6 +110,8 @@ h2 span {
 .body2_text{
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(108, 108, 110);
+   
     font-size: 0.5rem;
 }
 .wrap{
@@ -108,18 +127,7 @@ h2 span {
     padding-left: 40px;
     
 }
-/*.footer1 > ul{
-    display: inline-block;
-    padding-right: 40px;
-    padding-left: 40px;
-}
-.footer1 >ul >li{
-    display: inline-block;
-    margin-right: 28px;
-    padding-top: 20px;
-    padding-right: 170px;
-    padding-bottom: 120px;
-}*/
+
 .footer_text1, .footer_text2, .footer_text3, .footer_text4{
     display: inline-block;
     vertical-align: top;
@@ -131,6 +139,7 @@ h2 span {
 }
 .footer_text2 {
     padding-left: 70px;
+    color: rgb(108, 108, 110);
 }
 .h3{
     font-size: 12;
@@ -150,7 +159,7 @@ h2 span {
         background-color: #27292f;
         padding-top: 10px;
         padding-bottom: 10px;
-        color: whitesmoke;
+        color: rgb(108, 108, 110);
     }
     
     
@@ -161,6 +170,53 @@ h2 span {
         margin-left: 500px;
     }
    
+    .search-container{
+        /*max-width: 100%;
+        width: 40px;
+        height: 60px;
+       background-color: 30px;*/
+        border-radius: 30px;
+        position: relative;
+        max-width: 200px;
+        
+    }
+    .input{
+        width: 102%;
+        height: 30px;
+        border-radius: 30px;
+        color: white;
+        background:black;
+        border: 0px;
+       padding-left: 8px;
+    }
+    .search-container > form > button{
+      
+        
+        
+        height: 100%;
+        background:black;
+        color: white;
+        border-radius: 50%;
+        position: absolute;
+        border: 0px;
+top: 0px;
+right: 0px;
+        
+    }
+    .form{
+        position: relative;
+    }
+    .search-container{
+        margin-left: 1090px;
+    }
+    
+   .search-container >form >button > .fafa-search {
+       font-size: 10px;
+   }
+   .footer2 > ul .template{
+       float: right;
+       margin-right: 20px;
+   }
     
     
     
