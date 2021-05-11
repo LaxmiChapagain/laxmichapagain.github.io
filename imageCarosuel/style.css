@@ -1,5 +1,5 @@
 .carousel-container {
-    width: 100px;
+    width: 200px;
     height: 300px;
     margin-left: 300px;
     margin-right: 300px;
@@ -8,7 +8,7 @@
 }
 
 .carousel-slide {
-    width: 200px;
+    width: 400px;
     height: 300px;
     display: flex;
 }
@@ -19,7 +19,7 @@
     z-index: 10;
     left: 5%;
     font-size: 40px;
-    color: white;
+    color: rgb(27, 27, 27);
     cursor: pointer;
 }
 
@@ -29,6 +29,6 @@
     z-index: 10;
     right: 5%;
     font-size: 40px;
-    color: white;
+    color: rgb(27, 27, 27);
     cursor: pointer;
 }
