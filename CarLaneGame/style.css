@@ -3,3 +3,23 @@
     height: 300px;
     background-color: red;
 }
+
+.canvas {
+    text-align: center;
+}
+
+.leftside {
+    background-color: blueviolet;
+    padding-bottom: 10%;
+    padding-top: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    color: black;
+    margin-left: 10%;
+    vertical-align: top;
+}
+
+.canvas,
+.leftside {
+    display: inline-block;
+}
