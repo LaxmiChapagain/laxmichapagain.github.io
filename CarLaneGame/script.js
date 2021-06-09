@@ -1,168 +1,253 @@
-const canvas = document.querySelector('#gamebox'); // Acessing canvas element without id
-const ctx = canvas.getContext('2d'); //the object that directly represents the drawing area of the canvas and allows us to draw 2D shapes on it
-const carImg = new Image; //The Image() constructor creates a new HTMLImageElement instance
-const roadImg = new Image;
-const car2 = new Image;
-const gameObjects = [];
+const canvas = document.querySelector('#gamebox') // Acessing canvas element without id
+const ctx = canvas.getContext('2d') // the object that directly represents the drawing area of the
+    // canvas and allows us to draw 2D shapes on it
+const carImg = new Image() // The Image() constructor creates a new
+    // HTMLImageElement instance
+const roadImg = new Image();
+const car2 = new Image();
+const obstacleImg = new Image();
+const gameObjects = []
+const roadSpeed = 5;
+var obstacleSpeed = 3;
+// buttons
+var upButton = document.querySelector('#up');
 
-//buttons
-var upButton = document.querySelector("#up");
+var rightButton = document.querySelector('#right');
+var leftButton = document.querySelector('#left');
+var downButton = document.querySelector('#down');
+var startButton = document.querySelector('#start');
+var stopGame = false;
 
-var rightButton = document.querySelector("#right");
-var leftButton = document.querySelector("#left");
-var downButton = document.querySelector("#down");
-var startButton = document.querySelector("#start")
+carImg.src = 'car.png';
+roadImg.src = 'road2.png';
+car2.src = 'car2.png';
+obstacleImg.src = 'car.png';
+
+const input = {
+        delx: 0,
+        dely: 0
+    } // For changing position of car
+    // const width = canvas.width = window.innerWidth * 0.37; //width and height of
+    // the browser viewport const height = canvas.height = window.innerHeight *
+    // 0.37;
+const width = (canvas.width = 400); // width and height of the browser viewport
+const height = (canvas.height = 400);
 
 
-carImg.src = "car.png";
-roadImg.src = "road.png";
-car2.src = "car2.png";
+function ScoreBoard(initialScore) {
+    this.id = "scoreboard";
+    this.score = initialScore;
+    this.initialTime = (new Date()).getTime();
+}
 
-const input = { delx: 0, dely: 0 }; // For changing position of car
-//const width = canvas.width = window.innerWidth * 0.37; //width and height of the browser viewport 
-//const height = canvas.height = window.innerHeight * 0.37;
-const width = canvas.width = 400; //width and height of the browser viewport 
-const height = canvas.height = 600;
+ScoreBoard.prototype.draw = function() {
+    var elem = document.getElementById("scoreboard");
+    elem.innerText = this.score;
+}
 
-function Car(x, y) { //Modelling a car with Car constructor
+ScoreBoard.prototype.update = function() {
+    var currentTime = (new Date()).getTime();
+    if (currentTime - this.initialTime > 1000) {
+        this.score += 1;
+        this.initialTime = currentTime;
+    }
+}
+
+
+function Road(x, y, scrollSpeed) {
     this.x = x;
     this.y = y;
+    this.scrollSpeed = scrollSpeed;
+    this.id = 'obstacle' + Math.floor(Math.random() * 100);
 }
 
-function Car2(c, d) { //Modelling a car with Car constructor
-    this.c = c;
-    this.d = d;
+Road.prototype.draw = function() {
+    ctx.drawImage(roadImg, this.x, this.y, canvas.width, canvas.height)
+
+    ctx.drawImage(
+        roadImg,
+        this.x,
+        this.y - canvas.height,
+        canvas.width,
+        canvas.height
+    )
 }
-// window.onload is an event that occurs when all the assets
-// have been successfully loaded( in this case only the spacebg.png)
-window.onload = function() {
-    // the initial image height
-    var imgHeight = 0;
 
-
-    // the scroll speed
-    //  canvas.height must be divisible by scroll speed
-
-    var scrollSpeed = 10;
-
-    // this is the primary animation loop that is called 60 times per second
-    function animation() {
-        // draw image 1
-        ctx.drawImage(roadImg, 0, imgHeight);
-        // draw image 2
-        ctx.drawImage(roadImg, 0, imgHeight - canvas.height);
-        // update image height
-        imgHeight += scrollSpeed;
-
-        // reseting the images when the first image entirely exits the screen
-        if (imgHeight === canvas.height)
-            imgHeight = 0;
-
-        // this function creates a 60fps animation by scheduling a
-        // loop function call before the
-        // next redraw every time it is called
-        window.requestAnimationFrame(animation);
+Road.prototype.update = function() {
+    this.y += this.scrollSpeed
+    if (this.y >= canvas.height) {
+        this.y = 0
     }
-
-    // this initiates the animation by calling the loop function for the first time
-    animation();
-
 }
 
 
 
-Car.prototype.draw = function() {
-    ctx.drawImage(carImg, this.x, this.y, carImg.width * 0.10, carImg.height * 0.10);
-
-}
-Car2.prototype.draw = function() {
-    ctx.drawImage(car2, this.c, this.d, car2.width * 0.10, car2.height * 0.10);
-}
-
-//Road.prototype.draw = function() {
-
-
-Car.prototype.update = function() {
-    this.x += input.delx;
-    this.y += input.dely;
-
+function Collider(x, y, w, h) {
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
 }
 
-//Road.prototype.update = function() {}
+Collider.prototype.checkCollision = function(anotherColliderObject) {
+    if (this.x < anotherColliderObject.x + anotherColliderObject.width &&
+        this.x + this.width > anotherColliderObject.x &&
+        this.y < anotherColliderObject.y + anotherColliderObject.height &&
+        this.y + this.height > anotherColliderObject.y) return true;
 
-function resetInput() { // resets input
-    input.delx = 0;
-    input.dely = 0;
-}
-
-function setup() { // initializing car and road object
-
-    var car = new Car(canvas.width * 0.5, canvas.height - 50);
-    var cartwo = new Car2(0, 10);
-
-    //var road = new Road(0, 0);
-
-
-    gameObjects.push(car);
-    //gameObjects.push(road);
-    //gameObjects.push(cartwo);
-
-
-
-    for (var i = 0; i < gameObjects.length; i++) {
-        (gameObjects[i]).draw();
-    };
-
-    rightButton.addEventListener('click', function() {
-        input.delx = 50;
-        loop();
-    });
-
-    leftButton.addEventListener('click', function() {
-        input.delx = -50;
-        loop();
-    });
-
-
-    downButton.addEventListener('click', function() {
-        input.dely = 50;
-        loop();
-    });
-
-    upButton.addEventListener('click', function() {
-        this.style.color = '#2B5998';
-        input.dely = -50;
-        loop();
-    });
-    startButton.addEventListener('click', function() {
-        gameObjects[1].x = canvas.width * 0.45;
-        gameObjects[1].y = canvas.height - 50;
-        loop();
-
-    });
-}
-
-
-function loop() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-    ctx.fillRect(0, 0, width, height);
-    //(the four parameters provide a start coordinate, and a width and height for the rectangle drawn)
-
-    for (var i = 0; i < gameObjects.length; i++) {
-        (gameObjects[i]).update();
-        (gameObjects[i]).draw();
-
-
-
-    }
-    window.requestAnimationFrame(loop); //request that your animation function be called before the browser performs the next repaint
-
-
-    resetInput();
-
-
+    return false;
 };
 
-//game
-loop();
-setup();
+function Obstacle(speed) {
+    this.spawn();
+    this.id = 'obstacle' + Math.floor(Math.random() * 100);
+    this.speed = speed;
+    this.width = obstacleImg.width * 0.1;
+    this.height = obstacleImg.height * 0.1;
+    this.collider = new Collider(this.x, this.y, this.width, this.height);
+}
+
+
+Obstacle.prototype.draw = function() {
+    ctx.drawImage(obstacleImg, this.x, this.y, this.width, this.height);
+    this.collider.x = this.x;
+    this.collider.y = this.y;
+}
+
+Obstacle.prototype.update = function() {
+    this.y += this.speed;
+
+    if (this.y >= canvas.height) {
+        this.spawn();
+    }
+}
+
+Obstacle.prototype.spawn = function() {
+    // var possiblePositionsOfX = [10, 20, 30, 40];
+    var possiblePositionsOfY = [0, -10, -20, -30, -40];
+    var randomX = Math.floor(Math.random() * 200) + 50;
+    var randomY = Math.floor(Math.random() * possiblePositionsOfY.length);
+
+    this.x = randomX;
+    // console.log(randomX);
+    this.y = possiblePositionsOfY[randomY];
+
+}
+
+function Car(x, y) {
+    // Modelling a car with Car constructor
+    this.x = x;
+    this.y = y;
+    this.id = 'car' + Math.floor(Math.random() * 100);
+    this.width = carImg.width * 0.1;
+    this.height = carImg.height * 0.1;
+    this.collider = new Collider(this.x, this.y, this.width, this.height);
+}
+
+Car.prototype.draw = function() {
+    ctx.drawImage(carImg, this.x, this.y, this.width, this.height);
+    this.collider.x = this.x;
+    this.collider.y = this.y;
+}
+
+Car.prototype.update = function() {
+
+    if (this.checkCollision()) {
+        alert("Game over");
+        setup();
+        stopGame = true;
+
+    }
+
+    this.x += input.delx;
+    this.y += input.dely;
+}
+
+Car.prototype.checkCollision = function() {
+    for (var i = 0; i < gameObjects.length; i++) {
+        var e = gameObjects[i];
+        if (e.id != this.id && e.collider) {
+            if (this.collider.checkCollision(e.collider)) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+function resetInput() {
+    // resets input
+    input.delx = 0
+    input.dely = 0
+}
+
+function setup() {
+    // initializing car and road object
+    var car = new Car(canvas.width * 0.5, canvas.height - 50)
+        // var car = new Car(0, 10);
+
+    var road = new Road(0, 0, roadSpeed)
+    var obstacle = new Obstacle(obstacleSpeed);
+    var scoreBoard = new ScoreBoard(0);
+    // console.log(obstacle);
+    gameObjects.length = 0;
+    gameObjects.push(road);
+    gameObjects.push(obstacle);
+    gameObjects.push(car);
+    gameObjects.push(scoreBoard);
+
+    for (var i = 0; i < gameObjects.length; i++) {
+        gameObjects[i].draw()
+    }
+
+    rightButton.addEventListener('click', function() {
+        input.delx = 10
+            // loop();
+    })
+
+    leftButton.addEventListener('click', function() {
+        input.delx = -10
+            // loop();
+    })
+
+    downButton.addEventListener('click', function() {
+        input.dely = 10
+            // loop();
+    })
+
+    upButton.addEventListener('click', function() {
+        this.style.color = '#2B5998'
+        input.dely = -10
+            // loop();
+    })
+
+    startButton.addEventListener('click', function() {
+        stopGame = false;
+        // loop();
+    })
+}
+
+function loop() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 1)'
+    ctx.fillRect(0, 0, width, height)
+        //(the four parameters provide a start coordinate, and a width and height for
+        // the rectangle drawn)
+    for (var i = 0; i < gameObjects.length; i++) {
+        gameObjects[i].draw()
+
+        if (stopGame != true) {
+            gameObjects[i].update()
+
+        }
+    }
+
+    window.requestAnimationFrame(loop) // request that your animation function be called before the
+        // browser performs the next repaint
+
+    resetInput()
+}
+
+// game
+setup()
+loop()
