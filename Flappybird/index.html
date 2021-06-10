@@ -4,12 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Flappy Bird</title>
+    <title>carlane</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    <canvas id="gamebox"></canvas>
+
+    <div class="canvas"><canvas id="gamebox"></canvas></div>
+    <div class="leftside">Scoreboard
+
+        <p id="scoreboard"></p>
+    </div>
     <div>
         <div><button id="up">Up</button></div>
         <div>
@@ -20,9 +25,12 @@
     </div>
     <div><button id="down">Down</button></div>
     <div>
+        <div>
+            <button id="start">Start</button>
+        </div>
 
 
-        <script src="main.js"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>
