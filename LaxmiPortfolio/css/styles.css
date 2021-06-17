@@ -1,0 +1,156 @@
+body {
+    text-align: center;
+    background-color: #e4efe7;
+    font-family: 'Merriweather', serif;
+    font-size: 100%;
+}
+
+.top-container {
+    background-color: #EAF6F6;
+}
+
+.middle-conatiner {
+    background-color: white;
+    padding-top: 50px;
+}
+
+.portfolio-description {
+    width: 350px;
+    margin: 0 auto 0 auto;
+    color: #40514E;
+}
+
+.hr-portfolio {
+    width: 40px;
+    border-style: dotted;
+    border-width: 7px;
+    border-bottom: none;
+    margin: 80px auto 0 auto;
+    color: #EAF6F6;
+}
+
+.hr-skill {
+    width: 40px;
+    border-style: dotted;
+    border-width: 7px;
+    border-bottom: none;
+    margin: 80px auto 0 auto;
+    color: #EAF6F6;
+}
+
+h1 {
+    font-size: 4.625rem;
+    font-family: 'Pattaya', sans-serif;
+    margin: 50 auto 0 auto;
+    color: #66BFBF;
+    line-height: 2;
+}
+
+.h2-hello {
+    color: #66BFBF;
+}
+
+.h2-myskill {
+    margin-top: 0;
+    margin-left: 210px;
+    font-family: 'Merriweather', serif;
+    font-size: 2.5rem;
+    color: #66BFBF;
+    font-weight: normal;
+}
+
+.h2-getintouch {
+    margin-top: 80px;
+    color: #119993;
+}
+
+h3 {
+    color: #119993;
+    font-family: 'Merriweather', serif;
+}
+
+.bottom-cloud {
+    width: 10%;
+    position: absolute;
+    left: 400px;
+    bottom: 200px;
+}
+
+.top-cloud {
+    width: 12%;
+    position: absolute;
+    right: 300px;
+    top: 50px;
+}
+
+.top-conatiner {
+    position: relative;
+    padding-top: 100px;
+}
+
+.skill-row {
+    width: 50%;
+    margin: 100px auto 100px auto;
+    text-align: left;
+    line-height: 2;
+}
+
+.skill-img-code {
+    width: 25%;
+    float: left;
+    margin-right: 30px;
+}
+
+.skill-img-learn {
+    width: 25%;
+    float: right;
+    margin-left: 30px;
+}
+
+.getintouch-description {
+    padding: 20px 0 20px 0;
+}
+
+.p-getintouch {
+    width: 400px;
+    margin: 0 auto 0 auto;
+}
+
+.BUTTON_SDC {
+    background: #119993;
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: 18px;
+    padding: 16px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    margin: 30px 0 45px 0;
+}
+
+.BUTTON_SDC:hover {
+    background: #1E62D0;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.bottom-section {
+    background-color: #66BFBF;
+    padding-top: 40px;
+}
+
+.footer-link {
+    color: #119993;
+    text-decoration: none;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.copyright {
+    margin-top: 50px;
+    padding-bottom: 10px;
+    color: #EAF6F6;
+    font-size: 12px;
+}
