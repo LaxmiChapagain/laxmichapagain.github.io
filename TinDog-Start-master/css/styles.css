@@ -1,5 +1,6 @@
 body {
     font-family: "Montserrat";
+    text-align: center;
 }
 
 h1,
@@ -8,12 +9,13 @@ h3 {
     font-family: "Montserrat-black";
 }
 
-h2 {
+.section-heading {
     font-size: 3rem;
     line-height: 1.5;
 }
 
-h3 {
+.feature-title {
+    font-family: "Montserrat-black";
     font-size: 1.5rem;
 }
 
@@ -30,6 +32,7 @@ p {
 #title {
     background-color: #ef8172;
     color: white;
+    text-align: left;
 }
 
 
@@ -73,8 +76,11 @@ p {
 }
 
 .feature-box {
-    text-align: center;
     padding: 3%;
+}
+
+.icon {
+    color: #ef8172;
 }
 
 .icon:hover {
@@ -82,9 +88,13 @@ p {
 }
 
 #testimonials {
-    text-align: center;
     background-color: #ef8172;
     color: white;
+}
+
+.testimonial-text {
+    font-size: 3rem;
+    line-height: 1.5;
 }
 
 .carousel-item {
@@ -103,7 +113,6 @@ em {
 
 #press {
     background-color: #ef8172;
-    text-align: center;
     padding-bottom: 3%;
 }
 
@@ -121,7 +130,6 @@ em {
     color: white;
     padding: 7% 15%;
     margin-top: 80px;
-    text-align: center;
 }
 
 .cta-heading {
@@ -132,7 +140,6 @@ em {
 
 #footer {
     padding: 5% 15%;
-    text-align: center;
 }
 
 .social-icon {
